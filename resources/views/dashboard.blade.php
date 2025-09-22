@@ -17,6 +17,11 @@
                         <img src="jetbrains://php-storm/navigate/reference?project=todolist&path=public%2Fassets%2Ftodo_img.png" alt="Todo_logo" width="300">
                     </a>
                 </div>
+                <div class="col-md-11">
+                    <a href="/tasks" class="d-flex align-items-center text-dark text-decoration-none">
+                        <li class="d-flex align-items-center text-dark text-decoration-none" style="">Tasks</li>
+                    </a>
+                </div>
                 <div class="col-md-1">
                     <a class="dropdown-item" href="{{ route('logout') }}"
                        onclick="event.preventDefault();
@@ -42,7 +47,7 @@
                 @endsession
 
                 <h1 class="display-5 fw-bold">Hi, {{ auth()->user()->name }}</h1>
-                <p class="col-md-8 fs-4">Welcome to dashboard.<br/>Using a series of utilities, you can create this jumbotron, just like the one in previous versions of Bootstrap. Check out the examples below for how you can remix and restyle it to your liking.</p>
+                <p class="col-md-8 fs-4">Welcome to the ToDo List Dashboard<br/>"Stay organized and accomplish more with your personalized to-do list. Keep track of your tasks, set priorities, and turn your to-do's into done! Designed to help you stay focused, motivated, and productive—every day."</p>
                 <button class="btn btn-primary btn-lg" type="button">Dashboard</button>
             </div>
         </div>

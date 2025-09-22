@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use http\Client\Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\View\Factory;
 use Session;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
@@ -17,7 +17,7 @@ class AuthController extends Controller
     /**
      * Write code on Method
      *
-     * @return response()
+     * @return View ()
      */
     public function index(): View
     {
@@ -27,7 +27,7 @@ class AuthController extends Controller
     /**
      * Write code on Method
      *
-     * @return response()
+     * @return View ()
      */
     public function registration(): View
     {
@@ -37,9 +37,10 @@ class AuthController extends Controller
     /**
      * Write code on Method
      *
-     * @return response()
+     * @param Request $request
+     * @return RedirectResponse ()
      */
-    public function postLogin(Request $request): RedirectResponse
+    public function auth(Request $request): RedirectResponse
     {
         $request->validate([
             'email' => 'required',
@@ -58,7 +59,8 @@ class AuthController extends Controller
     /**
      * Write code on Method
      *
-     * @return response()
+     * @param Request $request
+     * @return RedirectResponse ()
      */
     public function postRegistration(Request $request): RedirectResponse
     {
@@ -77,11 +79,9 @@ class AuthController extends Controller
     }
 
     /**
-     * Write code on Method
-     *
-     * @return response()
+     * @return View|Factory
      */
-    public function dashboard()
+    public function dashboard(): View|Factory
     {
         if(Auth::check()){
             return view('dashboard');
@@ -93,7 +93,8 @@ class AuthController extends Controller
     /**
      * Write code on Method
      *
-     * @return response()
+     * @param array $data
+     * @return mixed ()
      */
     public function create(array $data)
     {
@@ -107,7 +108,7 @@ class AuthController extends Controller
     /**
      * Write code on Method
      *
-     * @return response()
+     * @return RedirectResponse ()
      */
     public function logout(): RedirectResponse
     {

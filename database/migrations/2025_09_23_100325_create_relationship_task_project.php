@@ -11,8 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('relationship_task_project', function (Blueprint $table) {
+        Schema::create('project_as_task', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('project_id')->references('id')->on('projects');
+            $table->foreignId('task_id')->references('id')->on('tasks');
             $table->timestamps();
         });
     }

@@ -15,14 +15,22 @@ class Task extends Model
      *
      * @var list<string>
      */
+    protected $table = 'tasks';
+
     protected $fillable = [
         'title',
-        'status',
+        'description',
         'priority',
-        'delay',
-        'content',
-        'counter',
+        'status',
+        'category',
+        'time_deadline',
+        'date_deadline',
         'user_id',
-        'project_id',
     ];
+
+    public function user(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
+
 }

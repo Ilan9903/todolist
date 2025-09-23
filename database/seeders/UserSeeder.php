@@ -7,9 +7,9 @@ use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class UserSeeder extends Seeder {
-    public function run()
+    public function run(): void
     {
-       // User::factory(10)->create();
+        User::factory(20)->create();
     }
 }
 

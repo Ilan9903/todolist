@@ -3,7 +3,7 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-
+use App\Models\User;
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Task>
  */
@@ -17,12 +17,14 @@ class TaskFactory extends Factory
     public function definition(): array
     {
         return [
-            'title' => fake()->title(),
-            'status' => fake()->randomElement(['pending', 'completed']),
-            'priority' => fake()->randomElement(['low', 'medium', 'high']),
-            'delay' => fake()->randomElement(['15', '30', '45', '60']),
-            'content' => fake()->paragraph(),
-            'counter' => fake()->randomElement(['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']),
+            'user_id' => User::all('id')->random(),
+            'title' => $this->faker->sentence(),
+            'description' => $this->faker->paragraph(),
+            'status' => $this->faker->randomElement(['pending', 'completed']),
+            'priority' => $this->faker->randomElement(['low', 'medium', 'high']),
+            'category' => $this->faker->word(),
+            'time_deadline' => $this->faker->time(),
+            'date_deadline' => $this->faker->date(),
         ];
     }
 

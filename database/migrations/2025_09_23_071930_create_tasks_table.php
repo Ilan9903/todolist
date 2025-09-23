@@ -9,18 +9,18 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up()
+    public function up(): void
     {
         Schema::create('tasks', function (Blueprint $table) {
-            $table->increments('id');
-            $table->foreignId('user_id')->constrained('users');
-            $table->foreignId('project_id')->constrained('projects');
+            $table->id();
+            $table->foreignId('user_id')->references('id')->on('users');
             $table->string('title');
+            $table->text('description');
             $table->string('priority');
             $table->string('status');
-            $table->integer('delay')->default(0);
-            $table->text('content')->nullable();
-            $table->integer('counter')->nullable()->default(0);
+            $table->time('time_deadline');
+            $table->date('date_deadline');
+            $table->string('category');
             $table->timestamps();
 
         });

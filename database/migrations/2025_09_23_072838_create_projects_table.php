@@ -9,16 +9,15 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up()
+    public function up(): void
     {
         Schema::create('projects', function (Blueprint $table) {
-            $table->increments('id');
+            $table->id();
             $table->string('name');
-            $table->boolean('status')->default(0);
+            $table->boolean('status');
             $table->text('description')->nullable();
             $table->timestamps();
         });
-
 
     }
 

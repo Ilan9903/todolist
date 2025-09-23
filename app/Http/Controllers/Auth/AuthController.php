@@ -2,15 +2,15 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\View\Factory;
-use Session;
+use App\Http\Controllers\Session;
 use App\Models\User;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\View\View;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\View\Factory;
+use Illuminate\View\View;
 
 class AuthController extends Controller
 {
@@ -81,7 +81,7 @@ class AuthController extends Controller
     /**
      * @return View|Factory
      */
-    public function dashboard(): View|Factory
+    public function dashboard(): View|RedirectResponse
     {
         if(Auth::check()){
             return view('dashboard');

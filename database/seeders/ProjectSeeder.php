@@ -2,19 +2,18 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
+use App\Models\Project;
 use App\Models\Task;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use Termwind\Components\Dd;
 
-class TaskSeeder extends Seeder
+class ProjectSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        Task::factory(20)->create();
+        Project::factory(20)->create();
     }
 }

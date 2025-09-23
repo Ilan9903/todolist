@@ -4,9 +4,43 @@ namespace App\Http\Controllers;
 
 class TaskController extends Controller
 {
-    function addTask ()
+    function index()
     {
-        return view ('tasks.add');
+
     }
 
+    function create()
+    {
+
+    }
+
+    function store()
+    {
+
+    }
+
+    function show()
+    {
+
+    }
+
+    function edit()
+    {
+
+    }
+
+    function update()
+    {
+
+    }
+
+    function completed()
+    {
+
+    }
+
+    function destroy()
+    {
+
+    }
 }

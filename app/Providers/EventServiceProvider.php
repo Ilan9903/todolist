@@ -3,12 +3,13 @@
 namespace App\Providers;
 
 use App\Listeners\ListenerUserCreated;
+use App\Models\User;
 use Illuminate\Support\ServiceProvider;
 
-class AppServiceProvider extends ServiceProvider
+class EventServiceProvider extends ServiceProvider
 {
     /**
-     * Register any application services.
+     * Register services.
      */
     public function register(): void
     {
@@ -16,9 +17,14 @@ class AppServiceProvider extends ServiceProvider
     }
 
     /**
-     * Bootstrap any application services.
+     * Bootstrap services.
      */
     public function boot(): void
     {
+        User::created ([
+            ListenerUserCreated::class, 'handle'
+            ]
+
+        );
     }
 }

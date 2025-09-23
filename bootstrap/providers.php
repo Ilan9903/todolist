@@ -1,6 +1,6 @@
 <?php
 
 return [
+    App\Providers\EventServiceProvider::class,
     Spatie\Permission\PermissionServiceProvider::class,
-    App\Providers\AppServiceProvider::class,
 ];

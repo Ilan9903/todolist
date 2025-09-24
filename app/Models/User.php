@@ -25,6 +25,14 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'title',
+        'description',
+        'priority',
+        'category',
+        'time_deadline',
+        'date_deadline',
+        'status',
+        'status',
     ];
 
     /**

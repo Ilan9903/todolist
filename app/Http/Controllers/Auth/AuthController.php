@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Session;
+use App\Http\Requests\UserRequest;
 use App\Models\User;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
@@ -37,43 +38,36 @@ class AuthController extends Controller
     /**
      * Write code on Method
      *
-     * @param Request $request
+     * @param UserRequest $request
      * @return RedirectResponse ()
      */
     public function auth(Request $request): RedirectResponse
     {
-        $request->validate([
-            'email' => 'required',
-            'password' => 'required',
-        ]);
-
         $credentials = $request->only('email', 'password');
-        if (Auth::attempt($credentials)) {
+        if(Auth::attempt($credentials)){
             return redirect()->intended('dashboard')
-                ->withSuccess('Successfully loggedin');
+            ->withSuccess('Successfully loggedin');
         }
-
-        return redirect("login")->withError('Invalid credentials');
+        return redirect("login");
     }
 
     /**
      * Write code on Method
      *
-     * @param Request $request
+     * @param UserRequest $request
      * @return RedirectResponse ()
      */
     public function postRegistration(Request $request): RedirectResponse
     {
-        $request->validate([
-            'name' => 'required',
-            'email' => 'required|email|unique:users',
-            'password' => 'required|min:6',
+        $user = new User([
+            'name' => $request['name'],
+            'email' => $request['email'],
+            'password' => bcrypt($request['password']),
         ]);
 
-        $data = $request->all();
-        $user = $this->create($data);
-
         Auth::login($user);
+        $data = $request->all();
+        $user ->save($data);
 
         return redirect("dashboard")->withSuccess('Great! You have Successfully loggedin');
     }
@@ -93,28 +87,12 @@ class AuthController extends Controller
     /**
      * Write code on Method
      *
-     * @param array $data
-     * @return mixed ()
-     */
-    public function create(array $data)
-    {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password'])
-        ]);
-    }
-
-    /**
-     * Write code on Method
-     *
      * @return RedirectResponse ()
      */
     public function logout(): RedirectResponse
     {
-        Session::flush();
         Auth::logout();
 
-        return Redirect('welcome');
+        return Redirect('login');
     }
 }

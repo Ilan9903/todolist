@@ -8,13 +8,19 @@ use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthController;
 
-Route::get('/', function () {return view('welcome');});
+Route::get('/', function () {
+    return view('welcome');
+});
 
+// Route::get ('users', [UserController::class, 'createUser'])->name('getAllUsers');
+// Route::post('user/create', [UserController::class, 'storeUser'])->name('addUser');
+// Route::get('user/create', [UserController::class, 'createUser'])->name('createUser');
+// Route::get('users/{id}', [UserController::class, 'getUser'])->name('getUser');
 
 /* -- AUTH -- */
 
 Route::get('registration', [AuthController::class, 'registration'])->name('register');
-Route::post('post-registration', [AuthController::class, 'postRegistration'])->name('register.post');
+Route::post('registration', [AuthController::class, 'postRegistration'])->name('register.post');
 Route::get('login', [AuthController::class, 'index'])->name('login');
 Route::post('login', [AuthController::class, 'auth'])->name('login.post');
 Route::get('dashboard', [AuthController::class, 'dashboard'])->name('dashboard');
@@ -29,7 +35,7 @@ Route::post('tasks', [TaskController::class, 'store'])->name('tasks.store');
 Route::get('tasks/{task}', [TaskController::class, 'show'])->name('tasks.show');
 Route::get('tasks/{task}/edit', [TaskController::class, 'edit'])->name('tasks.edit');
 Route::patch('tasks/{task}', [TaskController::class, 'update'])->name('tasks.update');
-Route::get ('tasks/completed/{task}', [TaskController::class, 'completed'])->name('tasks.completed');
+Route::get('tasks/completed/{task}', [TaskController::class, 'completed'])->name('tasks.completed');
 Route::delete('tasks/{task}', [TaskController::class, 'destroy'])->name('tasks.destroy');
 
 
@@ -43,7 +49,7 @@ Route::patch('password', [ProfileController::class, 'updatePassword'])->name('pa
 /* -- PROJECTS -- */
 
 Route::get('projects', [ProjectController::class, 'index'])->name('projects');
-Route::get('projects/create', [ProjectController::class, 'create'])->name('projects.create');
+Route::post('projects/create', [ProjectController::class, 'create'])->name('projects.create');
 Route::post('projects', [ProjectController::class, 'store'])->name('projects.store');
 Route::get('projects/{project}', [ProjectController::class, 'show'])->name('projects.show');
 Route::get('projects/{project}/edit', [ProjectController::class, 'edit'])->name('projects.edit');
@@ -54,14 +60,14 @@ Route::get('projects/completed/{project}', [ProjectController::class, 'completed
 
 /* -- ADMIN --*/
 
-Route::get('dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
-Route::get('users', [AdminController::class, 'showUsers'])->name('users');
-Route::get('tasks', [AdminController::class, 'showTasks'])->name('tasks');
-Route::get('projects', [AdminController::class, 'showProjects'])->name('projects');
-Route::get('users/create', [AdminController::class, 'createUser'])->name('users.create');
-Route::post('users', [AdminController::class, 'storeUser'])->name('users.store');
-Route::get('users/{user}', [AdminController::class, 'showUser'])->name('users.show');
-Route::get('users/{user}/edit', [AdminController::class, 'editUser'])->name('users.edit');
-Route::patch('users/{user}', [AdminController::class, 'updateUser'])->name('users.update');
-Route::delete('users/{user}', [AdminController::class, 'destroyUser'])->name('users.destroy');
+//Route::get('dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
+//Route::get('users', [AdminController::class, 'showUsers'])->name('users');
+//Route::get('tasks', [AdminController::class, 'showTasks'])->name('tasks');
+//Route::get('projects', [AdminController::class, 'showProjects'])->name('projects');
+//Route::get('users/create', [AdminController::class, 'createUser'])->name('users.create');
+//Route::post('users', [AdminController::class, 'storeUser'])->name('users.store');
+//Route::get('users/{user}', [AdminController::class, 'showUser'])->name('users.show');
+//Route::get('users/{user}/edit', [AdminController::class, 'editUser'])->name('users.edit');
+//Route::patch('users/{user}', [AdminController::class, 'updateUser'])->name('users.update');
+//Route::delete('users/{user}', [AdminController::class, 'destroyUser'])->name('users.destroy');
 

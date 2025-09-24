@@ -8,7 +8,7 @@ class AdminController
 {
     public function dashboard()
     {
-        return view('admin.dashboard');
+        return view('admin.admin.dashboard');
     }
 
     public function showUsers()

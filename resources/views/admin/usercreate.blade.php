@@ -19,7 +19,7 @@
                 <div class="card border border-light-subtle rounded-3 shadow-sm">
                     <div class="card-body p-3 p-md-4 p-xl-5">
                         <h2 class="fs-6 fw-normal text-center text-secondary mb-4">Sign up to your account</h2>
-                        <form method="POST" action="{{ route('register.post') }}">
+                        <form method="POST" action="{{ route('addUser') }}">
                             @csrf
 
                             @session('error')

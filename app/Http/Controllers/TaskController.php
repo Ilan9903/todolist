@@ -12,13 +12,15 @@ class TaskController extends Controller
 {
     function index()
     {
-        return view('tasks.add');
+        $tasks = Task::all()->toArray();
+
+        return view('dashboard', compact($tasks));
     }
 
-//    function create()
-//    {
-//        return view('tasks.add');
-//    }
+    function create()
+    {
+        return view('tasks.add');
+    }
 
     function store(TaskRequest $request)
     {
@@ -42,7 +44,10 @@ class TaskController extends Controller
 
     function show()
     {
-        return $this->getTask('id');
+        $tasks = Task::all('id');
+
+
+        return;
     }
 
     function edit()

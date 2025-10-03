@@ -46,12 +46,36 @@
 
                 <h1 class="display-5 fw-bold">Hi, {{ auth()->user()->name }}</h1>
                 <p class="col-md-8 fs-4">Welcome to the ToDo List Dashboard<br/>"Stay organized and accomplish more with your personalized to-do list. Keep track of your tasks, set priorities, and turn your to-do's into done! Designed to help you stay focused, motivated, and productive—every day."</p>
-                <table class="col-md-auto">
-                    <thead>Nom</thead>
-                    <thead>Desc</thead>
-                    <thead>Status</thead>
-                    <thead>Priority</thead>
-                    <thead>Category</thead>
+
+                {{ dump('test') }}
+
+                <table class="col-12">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Title</th>
+                                <th>Description</th>
+                                <th>Priority</th>
+                                <th>Status</th>
+                                <th>Category</th>
+                                <th>Time_Deadline</th>
+                                <th>Date_Deadline</th>
+                            </tr>
+                        </thead>
+                    <tbody>
+                    @foreach($tasks as $task)
+                        <tr>
+                            <td>{{ $task->id }}</td>
+                            <td><strong>{{ $task->title }}</strong></td>
+                            <td>{{ $task->description }}</td>
+                            <td>{{ $task->priority }}</td>
+                            <td>{{ $task->status }}</td>
+                            <td>{{ $task->category }}</td>
+                            <td>{{ $task->time_deadline }}</td>
+                            <td>{{ $task->date_deadline }}</td>
+                        </tr>
+                    @endforeach
+                    </tbody>
                 </table>
             </div>
         </div>
